@@ -12,7 +12,9 @@ import flashcardRoutes from "./routes/flashcardRoutes";
 const app: Application = express();
 
 
-app.use(cors({ origin: "http://localhost:5173" }));
+const CORS_ORIGIN = process.env.CORS_ORIGIN || "http://localhost:5173";
+
+app.use(cors({ origin: CORS_ORIGIN }));
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
@@ -25,6 +27,10 @@ app.use("/api", flashcardRoutes);
 
 app.get("/health", (_req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
+});
+
+app.use((_req, res) => {
+  res.status(404).json({ error: "Rota não encontrada" });
 });
 
 const PORT = process.env.PORT || 3333;

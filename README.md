@@ -140,6 +140,7 @@ As seguintes variáveis de ambiente devem ser configuradas no arquivo `.env` loc
 | `DATABASE_URL` | URL de conexão com o banco de dados PostgreSQL | `postgresql://postgres:senha@localhost:5432/lumen?schema=public` |
 | `JWT_SECRET` | String arbitrária secreta usada para assinar os tokens JWT | `sua_chave_secreta_super_forte_aqui` |
 | `PORT` | Porta onde a API HTTP Express estará escutando | `3333` |
+| `CORS_ORIGIN` | Origem autorizada a consumir a API (URL do front-end) | `http://localhost:5173` |
 
 ---
 
